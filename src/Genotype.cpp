@@ -8,14 +8,6 @@
 #include "Genotype.hpp"
 
 
-Genotype::Genotype(int *chromosome, int size) : _size(size) {
-	_chromosome = new int[_size];
-
-	for(int i = 0; i < _size; ++i) {
-		_chromosome[i] = chromosome[i];
-	}
-}
-
 void Genotype::init() {
 	bool tab[10] = {false};
 	bool isSetted = false;
@@ -36,10 +28,36 @@ void Genotype::init() {
 }
 
 Genotype::~Genotype() {
-	delete []_chromosome;
+	if( _chromosome != NULL ) {
+		delete []_chromosome;
+	}
+}
+
+Genotype::Genotype(const Genotype& g) {
+
+	this->_chromosome = new int[g._size];
+	this->_size = g._size;
+
+	for(int i = 0; i < g._size; ++i) {
+		this->_chromosome[i] = g._chromosome[i];
+	}
+}
+
+Genotype& Genotype::operator=(Genotype &g) {
+	delete [](this->_chromosome);
+
+	this->_size = g._size;
+	this->_chromosome = new int[this->_size];
+
+	for(int i = 0; i < g._size; ++i) {
+		this->_chromosome[i] = g._chromosome[i];
+	}	
+
+	return *this;
 }
 
 void Genotype::mutate(double probability) {
+
 
 	double prob = ((double) rand() / (RAND_MAX));
 

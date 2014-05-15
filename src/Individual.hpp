@@ -26,8 +26,6 @@ struct Individual {
 	Genotype _genotype;
 	Phenotype _phenotype;
 
-	static int ixx;
-
 	double _fitness;
 };
 

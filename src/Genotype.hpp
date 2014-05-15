@@ -13,10 +13,13 @@
 
 struct Genotype {
 
-	Genotype(int *chromosome, int size = 10);
 	Genotype(int size = 10);
 
+	Genotype(const Genotype& g);
+
 	~Genotype();
+
+	Genotype & operator=(Genotype &g);
 
 	void init();
 	void mutate(double probability);

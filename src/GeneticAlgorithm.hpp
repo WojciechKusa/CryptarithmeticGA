@@ -8,17 +8,23 @@
 #ifndef GENETICALGORITHM_HPP_
 #define GENETICALGORITHM_HPP_
 
+//#define PARALLEL
+
 #include "Genotype.hpp"
 #include "Phenotype.hpp"
 #include "Individual.hpp"
-#include "Population.hpp"
 #include "CryptarithmeticPuzzle.hpp"
 #include <vector>
+#include <fstream>
+
+#ifdef PARALLEL
+#include "mpi.h"
+#endif
 
 class GeneticAlgorithm {
 	public:
 		GeneticAlgorithm();
-		GeneticAlgorithm(const int maxGenerations, const int populationSize, double mutationProbability, CryptarithmeticPuzzle &cp);
+		GeneticAlgorithm(const int maxGenerations, const int populationSize, double mutationProbability, CryptarithmeticPuzzle cp);
 		virtual ~GeneticAlgorithm();
 
 		void nextGeneration();
@@ -37,13 +43,16 @@ class GeneticAlgorithm {
 		void setPopulationSize(int populationSize);
 		void setMutationProbability(double mutationProbability);
 
-		void setCryptarithmeticPuzzle(CryptarithmeticPuzzle &cp);
+		void setCryptarithmeticPuzzle(CryptarithmeticPuzzle cp);
+		double getAverageFit() const;
+		double getBestFit() const;
+		double getWorstFit() const;
 
 	private:
 		CryptarithmeticPuzzle _cp;
 
-		Population _population;
-		Population _tempPopulation;
+		std::vector<Individual> _population;
+		std::vector<Individual> _tempPopulation;
 
 		Individual _bestIndividual;
 
