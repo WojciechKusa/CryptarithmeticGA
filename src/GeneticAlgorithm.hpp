@@ -12,28 +12,44 @@
 #include "Phenotype.hpp"
 #include "Individual.hpp"
 #include "Population.hpp"
+#include "CryptarithmeticPuzzle.hpp"
 
 class GeneticAlgorithm {
 	public:
 		GeneticAlgorithm();
+//		GeneticAlgorithm(const int maxGenerations, const int populationSize);
 		virtual ~GeneticAlgorithm();
 
 		void nextGeneration();
 
+		bool haltingCondition();
+
+		void evolve();
+
 		void initPopulation();
 
+		void setMaxGenerations(int maxGenerations);
+		void setPopulationSize(int populationSize);
+		void setMutationProbability(double mutationProbability);
+
+		void setCryptarithmeticPuzzle(CryptarithmeticPuzzle &cp);
 
 	private:
 		Population _population;
+		Population _tempPopulation;
 
 		int _generation;
 		int _maxGenerations;
+
+		int _populationSize;
+
+		double _mutationProbability;
 
 		double _bestFit;
 		double _worstFit;
 		double _averageFit;
 
-
+		CryptarithmeticPuzzle _cp;
 };
 
 #endif /* GENETICALGORITHM_HPP_ */

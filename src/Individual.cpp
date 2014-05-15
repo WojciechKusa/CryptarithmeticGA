@@ -22,3 +22,7 @@ void Individual::init() {
 double Individual::calculateFitness() {
 	return 0;
 }
+
+double Individual::getFitness() const {
+	return _fitness;
+}

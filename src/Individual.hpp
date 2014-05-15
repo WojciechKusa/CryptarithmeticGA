@@ -19,6 +19,9 @@ class Individual {
 		void init();
 
 		double calculateFitness();
+
+		double getFitness() const;
+
 	private:
 		Genotype _genotype;
 		Phenotype _phenotype;

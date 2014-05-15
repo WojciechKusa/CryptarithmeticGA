@@ -7,23 +7,47 @@
 
 #include "Genotype.hpp"
 
-Genotype::Genotype() {
 
+Genotype::Genotype(int *chromosome, int size) : _size(size) {
+	_chromosome = new int[_size];
+
+	for(int i = 0; i < _size; ++i) {
+		_chromosome[i] = chromosome[i];
+	}
 }
 
-Genotype::~Genotype() {
+void Genotype::init(int puzzleSize) {
+	for(int i = 0; i < _size; ++i) {
+		if(i <= puzzleSize) {
 
+			int random = rand()%10;
+
+			_chromosome[i] = random;
+		} else {
+			_chromosome[i] = -1;
+		}
+	}
 }
 
-Genotype::Genotype(std::vector<int> chromosome) : _chromosome(chromosome) {
-}
+void Genotype::mutate(double probability) {
 
-void Genotype::init() {
-}
+	double prob = ((double) rand() / (RAND_MAX));
 
-void Genotype::mutate() {
+	if(prob <= probability) {
+		int index1 = rand()%_size;
+		int index2 = rand()%_size;
+
+		int temp = _chromosome[index1];
+		_chromosome[index1] = _chromosome[index2];
+		_chromosome[index2] = temp;
+	}
+
 }
 
 int Genotype::getSize() const {
-	return _chromosome.size();
+	return _size;
+}
+
+Genotype::Genotype() {
+
 }

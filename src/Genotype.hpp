@@ -9,19 +9,23 @@
 #define GENOTYPE_HPP_
 
 #include <vector>
+#include <cstdlib>
 
 class Genotype {
 	public:
+		Genotype(int *chromosome, int size = 10);
 		Genotype();
-		Genotype(std::vector<int> chromosome);
-		~Genotype();
 
-		void init();
-		void mutate();
+		void init(int puzzleSize);
+		void mutate(double probability);
 
 		int getSize() const;
 	protected:
-		std::vector<int> _chromosome;
+		/**
+		 * w tabeli -1 gdy nie ma takiej cyfry ;>
+		 */
+		int *_chromosome;
+		int _size;
 };
 
 #endif /* GENOTYPE_HPP_ */
