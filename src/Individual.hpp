@@ -26,7 +26,10 @@ struct Individual {
 	Genotype _genotype;
 	Phenotype _phenotype;
 
+	static int ixx;
+
 	double _fitness;
 };
+
 
 #endif /* INDIVIDUAL_HPP_ */

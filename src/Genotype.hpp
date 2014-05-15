@@ -16,6 +16,8 @@ struct Genotype {
 	Genotype(int *chromosome, int size = 10);
 	Genotype(int size = 10);
 
+	~Genotype();
+
 	void init();
 	void mutate(double probability);
 

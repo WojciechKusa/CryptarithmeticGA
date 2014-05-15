@@ -16,9 +16,11 @@ Population::Population(std::vector<Individual> population) {
 }
 
 Population::Population(int populationSize, int puzzleSize) : _populationSize(populationSize) {
-	for(int i = 0; i < _populationSize; ++i) {
-		_population.insert(Individual(puzzleSize));
+	for(int i = 0; i < populationSize; ++i) {
+		_population.push_back(Individual(puzzleSize));
 	}
+
+//	std::cout << "aaaa";
 }
 
 Population::~Population() {
@@ -26,13 +28,10 @@ Population::~Population() {
 }
 
 void Population::initGeneration() {
-	std::multiset<Individual>::iterator it;
+	std::vector<Individual>::iterator it;
 	for(it = _population.begin(); it != _population.end(); ++it) {
-//		it->init(); //problem z const iteratorem - potrzebne c++11
+		it->init();
 	}
-}
-
-void Population::nextGeneration() {
 }
 
 

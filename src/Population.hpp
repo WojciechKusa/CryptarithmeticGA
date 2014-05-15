@@ -14,30 +14,29 @@
 #include <vector>
 #include <set>
 
-class Population {
-	public:
-		Population();
-		Population(int populationSize, int puzzleSize);
-		Population(std::vector<Individual> population);
-		~Population();
+struct Population {
+	Population();
+	Population(int populationSize, int puzzleSize);
+	Population(std::vector<Individual> population);
+	~Population();
 
-		void initGeneration();
-		void nextGeneration();
+	void initGeneration();
 
-	private:
-		struct FitnessComparison {
-		  bool operator() (const Individual& lhs, const Individual& rhs) {
-			  return lhs.getFitness() < rhs.getFitness();
-		  }
-		};
+//		struct FitnessComparison {
+//		  bool operator() (const Individual& lhs, const Individual& rhs) {
+//			  return lhs.getFitness() < rhs.getFitness();
+//		  }
+//		};
+//
+//		std::multiset<Individual, FitnessComparison> _population;
 
-		std::multiset<Individual, FitnessComparison> _population;
-		int _populationSize;
+	std::vector<Individual> _population;
+	int _populationSize;
 
-		int _generation;
-		int _maxGenerations;
+	int _generation;
+	int _maxGenerations;
 
-		double _mutationProbability;
+	double _mutationProbability;
 
 };
 

@@ -35,6 +35,10 @@ void Genotype::init() {
 	}
 }
 
+Genotype::~Genotype() {
+	delete []_chromosome;
+}
+
 void Genotype::mutate(double probability) {
 
 	double prob = ((double) rand() / (RAND_MAX));
@@ -53,6 +57,5 @@ void Genotype::mutate(double probability) {
 
 Genotype::Genotype(int size) : _size(size) {
 	_chromosome = new int[_size];
-
 }
 

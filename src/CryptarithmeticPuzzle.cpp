@@ -141,7 +141,7 @@ double CryptarithmeticPuzzle::solve(std::vector<int> solution) {
 
 //	std::cout << sol1 << "\t" << sol2 << std::endl;
 
-	return (sol1 - sol2);
+	return std::abs(sol1 - sol2);
 }
 
 const std::vector<char>& CryptarithmeticPuzzle::getLookupTable() const {

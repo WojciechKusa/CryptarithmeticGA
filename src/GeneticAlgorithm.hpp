@@ -18,12 +18,14 @@
 class GeneticAlgorithm {
 	public:
 		GeneticAlgorithm();
-		GeneticAlgorithm(const int maxGenerations, const int populationSize);
+		GeneticAlgorithm(const int maxGenerations, const int populationSize, double mutationProbability, CryptarithmeticPuzzle &cp);
 		virtual ~GeneticAlgorithm();
 
 		void nextGeneration();
 
 		bool haltingCondition();
+
+		void calculateStatistics();
 
 		void printSolution();
 
@@ -38,6 +40,8 @@ class GeneticAlgorithm {
 		void setCryptarithmeticPuzzle(CryptarithmeticPuzzle &cp);
 
 	private:
+		CryptarithmeticPuzzle _cp;
+
 		Population _population;
 		Population _tempPopulation;
 
@@ -54,7 +58,6 @@ class GeneticAlgorithm {
 		double _worstFit;
 		double _averageFit;
 
-		CryptarithmeticPuzzle _cp;
 };
 
 #endif /* GENETICALGORITHM_HPP_ */

@@ -15,7 +15,7 @@
 #include <iterator>
 #include <algorithm>
 #include <ctype.h>
-
+#include <cstdlib>
 
 /**
  * class representing Cryptarithmetic Puzzle, containing letter representation of puzzle.\n
@@ -33,7 +33,7 @@ class CryptarithmeticPuzzle {
 		void addPuzzleElement(const char &c, std::vector<int> &line);
 
 		double solve(std::vector<int> solution);
-	const std::vector<char>& getLookupTable() const;
+		const std::vector<char>& getLookupTable() const;
 
 	private:
 
