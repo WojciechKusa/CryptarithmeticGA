@@ -9,6 +9,9 @@
 #include <iostream>
 #include <fstream>
 #include "GeneticAlgorithm.hpp"
+#include <vector>
+#include <ctime>
+#include <cstdlib>
 
 #ifdef PARALLEL
 #include "mpi.h"
@@ -30,6 +33,7 @@ int main(int argc, char **argv) {
 	MPI_Get_processor_name(processor_name, &namelen); // pobieramy nazwe proc.
 #endif
 
+	clock_t startTime = clock();
 
 	CryptarithmeticPuzzle cp("puzzle.txt");
 	cp.print();
@@ -43,7 +47,7 @@ int main(int argc, char **argv) {
 	solution.push_back(0);
 	solution.push_back(8);
 	solution.push_back(2);
-	std::cout << "\n" <<  cp.solve(solution);
+	std::cout <<  cp.solve(solution) << std::endl;
 
 	GeneticAlgorithm ga;
 	ga.setMaxGenerations(200);
@@ -53,6 +57,8 @@ int main(int argc, char **argv) {
 
 	ga.evolve();
 
+
+	std::cout << "Program worked " << double( clock() - startTime ) / (double)CLOCKS_PER_SEC << " seconds." << std::endl;
 
 #ifdef PARALLEL
 	MPI_Finalize(); // obowiazkowe zamkniecie mpi

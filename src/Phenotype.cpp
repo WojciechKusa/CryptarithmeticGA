@@ -15,12 +15,14 @@ Phenotype::~Phenotype() {
 
 }
 
-Phenotype::Phenotype(Genotype genotype) {
+Phenotype::Phenotype(int puzzleSize) : _puzzleSize(puzzleSize) {
 }
 
 void Phenotype::decode(Genotype genotype) {
+	_decodedChromosome.clear();
+
+	for(int i = 0; i < _puzzleSize; ++i) {
+		_decodedChromosome.push_back(genotype._chromosome[i]);
+	}
 }
 
-double Phenotype::fitnessFunction() {
-	return 0;
-}

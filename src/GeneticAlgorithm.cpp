@@ -8,23 +8,33 @@
 #include "GeneticAlgorithm.hpp"
 
 GeneticAlgorithm::GeneticAlgorithm() {
-
 }
 
 GeneticAlgorithm::~GeneticAlgorithm() {
 
 }
 
+GeneticAlgorithm::GeneticAlgorithm(const int maxGenerations,
+	const int populationSize) : _population(_populationSize, _cp.getLookupTable().size()) {
+
+}
+
 void GeneticAlgorithm::nextGeneration() {
+
 }
 
 void GeneticAlgorithm::evolve() {
+
+
+	initPopulation();
+
 	for(_generation = 0; _generation < _maxGenerations; ++_generation) {
 		nextGeneration();
 	}
 }
 
 void GeneticAlgorithm::initPopulation() {
+	_population.initGeneration();
 }
 
 void GeneticAlgorithm::setMaxGenerations(int maxGenerations) {
@@ -42,6 +52,16 @@ bool GeneticAlgorithm::haltingCondition() {
 		return false;
 	}
 }
+
+void GeneticAlgorithm::printSolution() {
+	std::vector<char> lt = _cp.getLookupTable();
+
+	for (unsigned int i = 0; i < lt.size(); ++i) {
+		std::cout << lt[i] << " = " << _bestIndividual._genotype._chromosome[i] << std::endl;
+	}
+}
+
+
 
 void GeneticAlgorithm::setCryptarithmeticPuzzle(CryptarithmeticPuzzle &cp) {
 	_cp = cp;

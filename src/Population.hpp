@@ -17,6 +17,7 @@
 class Population {
 	public:
 		Population();
+		Population(int populationSize, int puzzleSize);
 		Population(std::vector<Individual> population);
 		~Population();
 
@@ -25,7 +26,7 @@ class Population {
 
 	private:
 		struct FitnessComparison {
-		  bool operator() (const Individual& lhs, const Individual& rhs) const {
+		  bool operator() (const Individual& lhs, const Individual& rhs) {
 			  return lhs.getFitness() < rhs.getFitness();
 		  }
 		};

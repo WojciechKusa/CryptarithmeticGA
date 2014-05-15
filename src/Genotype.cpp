@@ -16,16 +16,22 @@ Genotype::Genotype(int *chromosome, int size) : _size(size) {
 	}
 }
 
-void Genotype::init(int puzzleSize) {
+void Genotype::init() {
+	bool tab[10] = {false};
+	bool isSetted = false;
+
 	for(int i = 0; i < _size; ++i) {
-		if(i <= puzzleSize) {
 
-			int random = rand()%10;
+		while ( !isSetted ) {
+			int random = rand()%_size;
 
-			_chromosome[i] = random;
-		} else {
-			_chromosome[i] = -1;
+			if( !tab[random] ) {
+				_chromosome[i] = random;
+				tab[random] = true;
+				isSetted = true;
+			}
 		}
+		isSetted = false;
 	}
 }
 
@@ -44,10 +50,9 @@ void Genotype::mutate(double probability) {
 
 }
 
-int Genotype::getSize() const {
-	return _size;
-}
 
-Genotype::Genotype() {
+Genotype::Genotype(int size) : _size(size) {
+	_chromosome = new int[_size];
 
 }
+

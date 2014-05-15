@@ -11,21 +11,16 @@
 #include <vector>
 #include <cstdlib>
 
-class Genotype {
-	public:
-		Genotype(int *chromosome, int size = 10);
-		Genotype();
+struct Genotype {
 
-		void init(int puzzleSize);
-		void mutate(double probability);
+	Genotype(int *chromosome, int size = 10);
+	Genotype(int size = 10);
 
-		int getSize() const;
-	protected:
-		/**
-		 * w tabeli -1 gdy nie ma takiej cyfry ;>
-		 */
-		int *_chromosome;
-		int _size;
+	void init();
+	void mutate(double probability);
+
+	int *_chromosome;
+	int _size;
 };
 
 #endif /* GENOTYPE_HPP_ */

@@ -10,23 +10,23 @@
 
 #include "Genotype.hpp"
 #include "Phenotype.hpp"
+#include "CryptarithmeticPuzzle.hpp"
 
-class Individual {
-	public:
-		Individual();
-		~Individual();
+struct Individual {
+	Individual();
+	Individual(int puzzleSize);
+	~Individual();
 
-		void init();
+	void init();
 
-		double calculateFitness();
+	double calculateFitness(CryptarithmeticPuzzle cp);
 
-		double getFitness() const;
+	double getFitness() const;
 
-	private:
-		Genotype _genotype;
-		Phenotype _phenotype;
+	Genotype _genotype;
+	Phenotype _phenotype;
 
-		double _fitness;
+	double _fitness;
 };
 
 #endif /* INDIVIDUAL_HPP_ */

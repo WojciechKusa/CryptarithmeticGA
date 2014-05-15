@@ -33,7 +33,7 @@ class CryptarithmeticPuzzle {
 		void addPuzzleElement(const char &c, std::vector<int> &line);
 
 		double solve(std::vector<int> solution);
-
+	const std::vector<char>& getLookupTable() const;
 
 	private:
 

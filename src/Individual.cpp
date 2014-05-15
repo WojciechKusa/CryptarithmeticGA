@@ -7,7 +7,7 @@
 
 #include "Individual.hpp"
 
-Individual::Individual() {
+Individual::Individual(int puzzleSize) : _genotype(10), _phenotype(puzzleSize) {
 
 }
 
@@ -16,13 +16,20 @@ Individual::~Individual() {
 }
 
 void Individual::init() {
-
+	_genotype.init();
+	_phenotype.decode(_genotype);
 }
 
-double Individual::calculateFitness() {
-	return 0;
+double Individual::calculateFitness(CryptarithmeticPuzzle cp) {
+	_fitness = cp.solve(_phenotype._decodedChromosome);
+	return _fitness;
+}
+
+Individual::Individual() {
 }
 
 double Individual::getFitness() const {
 	return _fitness;
 }
+
+

@@ -13,16 +13,19 @@
 #include "Individual.hpp"
 #include "Population.hpp"
 #include "CryptarithmeticPuzzle.hpp"
+#include <vector>
 
 class GeneticAlgorithm {
 	public:
 		GeneticAlgorithm();
-//		GeneticAlgorithm(const int maxGenerations, const int populationSize);
+		GeneticAlgorithm(const int maxGenerations, const int populationSize);
 		virtual ~GeneticAlgorithm();
 
 		void nextGeneration();
 
 		bool haltingCondition();
+
+		void printSolution();
 
 		void evolve();
 
@@ -37,6 +40,8 @@ class GeneticAlgorithm {
 	private:
 		Population _population;
 		Population _tempPopulation;
+
+		Individual _bestIndividual;
 
 		int _generation;
 		int _maxGenerations;

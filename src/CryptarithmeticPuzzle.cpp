@@ -143,3 +143,7 @@ double CryptarithmeticPuzzle::solve(std::vector<int> solution) {
 
 	return (sol1 - sol2);
 }
+
+const std::vector<char>& CryptarithmeticPuzzle::getLookupTable() const {
+	return _lookupTable;
+}

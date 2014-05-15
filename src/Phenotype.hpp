@@ -9,19 +9,17 @@
 #define PHENOTYPE_HPP_
 
 #include "Genotype.hpp"
+#include <vector>
 
-class Phenotype {
-	public:
-		Phenotype();
-		Phenotype(Genotype genotype);
-		~Phenotype();
+struct Phenotype {
+	Phenotype();
+	Phenotype(int puzzleSize);
+	~Phenotype();
 
-		void decode(Genotype genotype);
+	void decode(Genotype genotype);
 
-		double fitnessFunction();
-
-	private:
-		double _decodedChromosome;
+	std::vector<int> _decodedChromosome;
+	int _puzzleSize;
 };
 
 #endif /* PHENOTYPE_HPP_ */
